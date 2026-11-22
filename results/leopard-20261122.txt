@@ -1,0 +1,22 @@
+22 Nov 2026, Power Mac G5 under Mac OS X 10.5.8, Apple GCC 4.2.1 (build 5577), stories110M_q80 (-n 128) and stories15M_q80 (-n 256), greedy, prompt "Once".
+
+Cost of one OpenMP parallel region (bench/regioni.c, 100,000 regions over 768 rows, best of 3):
+  1 thread: 2.61 us      2 threads: 75.60 us
+
+stories110M, tokens/s (runq_leo = one region per matrix multiply; runq_fondi = q/k/v and w1/w3 fused):
+  runq_leo   1 thread : 13.129 13.116 13.048
+  runq_fondi 1 thread : 13.162 13.187 13.150
+  runq_leo   2 threads: 17.230 17.232 17.192
+  runq_fondi 2 threads: 18.210 18.107 18.161
+  generated text identical in every run (md5 09a62c1a0c20720567eaf4ac1c3366cd)
+
+stories15M, 2 threads: runq_leo 75.659 75.427 75.478; runq_fondi 84.609 84.126 84.448 (md5 63651a66...); runq_fondi 1 thread 65.288
+
+Profile (ms per forward, profiling builds, mach_absolute_time):
+  1 thread,  unfused: matmul 64.75 quantize 2.65 RoPE+attention 5.30 SwiGLU 2.78 rest 0.24 total 75.71
+  1 thread,  fused  : matmul 65.15 quantize 2.65 RoPE+attention 5.41 SwiGLU 2.79 rest 0.24 total 76.23
+  2 threads, unfused: matmul 47.87 quantize 2.65 RoPE+attention 4.76 SwiGLU 2.79 rest 0.25 total 58.33
+  2 threads, fused  : matmul 44.47 quantize 2.65 RoPE+attention 4.83 SwiGLU 2.78 rest 0.25 total 54.98
+  (second run within 0.2 ms of these)
+
+Earlier the same morning (bench/banda_omp.c): read bandwidth 2.21 GB/s with 1 thread, 3.63 GB/s with 2.

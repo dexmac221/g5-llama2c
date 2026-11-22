@@ -18,9 +18,12 @@ Power Mac G5 (PowerMac7,3), two PowerPC 970 at 1.8 GHz (130 nm, PVR 0x0039 rev 2
 | int8, faster RoPE, rounding and attention | 63.1 | 12.9 |
 | **int8, weights stored unsigned (final, MorphOS, one CPU)** | **79.1** | **13.7** |
 | int8 final, Leopard, one CPU (GCC 4.2) | 66.0 | 13.1 |
-| **int8 final, Leopard, two CPUs (OpenMP)** | 76.0 | **17.2** |
+| int8 final, Leopard, two CPUs (OpenMP) | 75.5 | 17.2 |
+| **int8 final, Leopard, two CPUs, fused regions** | **84.4** | **18.2** |
 
 Measured memory read bandwidth: 2.25 GB/s on one CPU (MorphOS), 2.21 GB/s on one CPU and 3.63 GB/s on two (Leopard). The 110M int8 model reads 116 MB per token, so one CPU tops out near 19 tokens/s.
+
+Under Leopard an OpenMP parallel region costs 2.6 µs with one thread and 76 µs with two (`bench/regioni.c`). With one region per matrix multiply the 110M model opens 97 per token, about 7 ms of every 58. Fusing q/k/v and w1/w3 (`-DFONDI`) brings it to 61 regions and 18.2 tokens/s. Raw numbers and the per-part profile are in `results/leopard-20261122.txt`.
 
 The one-group-at-a-time version didn't reproduce across sessions: 9.14 and 37.2 tokens/s on 21 Nov 2026, 7.6-8.1 and 29.5-30.3 on 22 Nov. The others came within 6%. Raw output of the 22 Nov runs is in `results/`.
 
@@ -31,13 +34,15 @@ The one-group-at-a-time version didn't reproduce across sessions: 9.14 and 37.2 
 | `patches/patch_run_mos.py`, `patches/patch_runq_mos.py` | Turn llama2.c's `run.c` and `runq.c` (commit 350e04f) into the MorphOS versions |
 | `src/run_mos.c`, `src/runq_mos.c` | The generated sources (fp32 and int8) |
 | `src/runq_leo.c` | `runq_mos.c` plus an OpenMP pragma on the int8 matrix multiply, for Leopard |
+| `src/runq_leo2.c` | `runq_leo.c` plus `-DFONDI` (fused parallel regions) and a `mach_absolute_time()` profile; made by `patches/make_runq_leo2.py` |
 | `tools/quantizza_q8.py` | NumPy quantizer: fp32 `.bin` (llama2.c v0 format) to the Q8_0 v2 format of `runq.c`, without PyTorch or pickle |
 | `tools/converti_be.py` | Byte-swapped test files, to check the big-endian path on an x86 PC |
 | `bench/banda.c`, `bench/banda_omp.c` | Memory read bandwidth: 256 MB, best of five; the second one splits the read between OpenMP threads |
+| `bench/regioni.c` | Cost of one OpenMP parallel region |
 | `scripts/morphos/build_all` | AmigaDOS script that builds every variant in the table |
 | `scripts/morphos/rimisura` | AmigaDOS script for the three interleaved runs |
-| `scripts/leopard/misura_leo.sh` | Leopard runs with one and two threads |
-| `results/` | Raw output of the 22 Nov 2026 MorphOS runs |
+| `scripts/leopard/misura_leo.sh`, `misura_leo2.sh` | Leopard runs with one and two threads; region cost, profile and fused regions |
+| `results/` | Raw output of the 22 Nov 2026 runs, MorphOS and Leopard |
 
 Comments in the code are in Italian.
 
@@ -62,7 +67,8 @@ Comments in the code are in Italian.
 3. **MorphOS** (SDK 2018, GCC 6.4.0): copy `src/`, the models and the tokenizer to `Work:llama2c/` and run `Execute scripts/morphos/build_all`. Over SSH the SDK environment isn't loaded: without `Execute SYS:Development/Startup` GCC exits with code 1 and no message. `-mcpu=970` doesn't assemble with the 2018 toolchain; `-mcpu=7450` works and enables AltiVec, so plain C builds need `-mno-altivec`.
 4. **Leopard** (Xcode, Apple GCC 4.2.1):
    `gcc-4.2 -O3 -mcpu=970 -maltivec -fopenmp -std=gnu99 -DSENZA_MMAP -DVELOCE -DV3 -o runq_leo src/runq_leo.c -lm`
-   then `OMP_NUM_THREADS=2 ./runq_leo stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once`
+   then `OMP_NUM_THREADS=2 ./runq_leo stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once`.
+   The fused version: the same command on `src/runq_leo2.c` with `-DFONDI` added.
 5. To regenerate the sources from upstream: clone llama2.c, `git checkout 350e04f`, then
    `python3 patches/patch_run_mos.py run.c run_mos.c` and `python3 patches/patch_runq_mos.py runq.c runq_mos.c`.
 
