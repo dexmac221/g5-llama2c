@@ -1,0 +1,47 @@
+; 22 nov 2026: rimisura uniforme per la revisione (3 giri, stesse lunghezze per fp32 e int8)
+Stack 8000000
+CD Work:llama2c
+Delete rm_#? QUIET
+runX stories110M.bin -z tokenizer.bin -t 0 -n 128 -i Once >rm_o_runX_110.txt *>rm_e_1_runX_110.txt
+runV stories110M.bin -z tokenizer.bin -t 0 -n 128 -i Once >rm_o_runV_110.txt *>rm_e_1_runV_110.txt
+runqX stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >rm_o_runqX_110.txt *>rm_e_1_runqX_110.txt
+runqV stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >rm_o_runqV_110.txt *>rm_e_1_runqV_110.txt
+runqQ stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >rm_o_runqQ_110.txt *>rm_e_1_runqQ_110.txt
+runqS stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >rm_o_runqS_110.txt *>rm_e_1_runqS_110.txt
+runq3 stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >rm_o_runq3_110.txt *>rm_e_1_runq3_110.txt
+runX stories15M.bin -z tokenizer.bin -t 0 -n 256 -i Once >rm_o_runX_15.txt *>rm_e_1_runX_15.txt
+runV stories15M.bin -z tokenizer.bin -t 0 -n 256 -i Once >rm_o_runV_15.txt *>rm_e_1_runV_15.txt
+runqX stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >rm_o_runqX_15.txt *>rm_e_1_runqX_15.txt
+runqV stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >rm_o_runqV_15.txt *>rm_e_1_runqV_15.txt
+runqQ stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >rm_o_runqQ_15.txt *>rm_e_1_runqQ_15.txt
+runqS stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >rm_o_runqS_15.txt *>rm_e_1_runqS_15.txt
+runq3 stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >rm_o_runq3_15.txt *>rm_e_1_runq3_15.txt
+runX stories110M.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_2_runX_110.txt
+runV stories110M.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_2_runV_110.txt
+runqX stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_2_runqX_110.txt
+runqV stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_2_runqV_110.txt
+runqQ stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_2_runqQ_110.txt
+runqS stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_2_runqS_110.txt
+runq3 stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_2_runq3_110.txt
+runX stories15M.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_2_runX_15.txt
+runV stories15M.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_2_runV_15.txt
+runqX stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_2_runqX_15.txt
+runqV stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_2_runqV_15.txt
+runqQ stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_2_runqQ_15.txt
+runqS stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_2_runqS_15.txt
+runq3 stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_2_runq3_15.txt
+runX stories110M.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_3_runX_110.txt
+runV stories110M.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_3_runV_110.txt
+runqX stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_3_runqX_110.txt
+runqV stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_3_runqV_110.txt
+runqQ stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_3_runqQ_110.txt
+runqS stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_3_runqS_110.txt
+runq3 stories110M_q80.bin -z tokenizer.bin -t 0 -n 128 -i Once >NIL: *>rm_e_3_runq3_110.txt
+runX stories15M.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_3_runX_15.txt
+runV stories15M.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_3_runV_15.txt
+runqX stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_3_runqX_15.txt
+runqV stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_3_runqV_15.txt
+runqQ stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_3_runqQ_15.txt
+runqS stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_3_runqS_15.txt
+runq3 stories15M_q80.bin -z tokenizer.bin -t 0 -n 256 -i Once >NIL: *>rm_e_3_runq3_15.txt
+Echo "fine" >rm_fine.txt

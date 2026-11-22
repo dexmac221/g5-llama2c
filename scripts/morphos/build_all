@@ -1,0 +1,12 @@
+; build every variant measured in the article (MorphOS 3.20, SDK 2018, GCC 6.4.0)
+; run from a MorphOS shell; the SDK environment must be loaded first
+Stack 8000000
+Execute SYS:Development/Startup
+CD Work:llama2c
+gg:bin/ppc-morphos-gcc-6 -O3 -mcpu=7450 -maltivec -noixemul -DSENZA_MMAP -o runV run_mos.c -lm
+gg:bin/ppc-morphos-gcc-6 -O3 -mcpu=7450 -mno-altivec -noixemul -DSENZA_MMAP -o runqX runq_mos.c -lm
+gg:bin/ppc-morphos-gcc-6 -O3 -mcpu=7450 -mno-altivec -noixemul -DSENZA_MMAP -o runX run_mos.c -lm
+gg:bin/ppc-morphos-gcc-6 -O3 -mcpu=7450 -noixemul -DSENZA_MMAP -DQUATTRO -DVELOCE -o runqS runq_mos.c -lm
+gg:bin/ppc-morphos-gcc-6 -O3 -mcpu=7450 -noixemul -DSENZA_MMAP -DQUATTRO -o runqQ runq_mos.c -lm
+gg:bin/ppc-morphos-gcc-6 -O3 -mcpu=7450 -noixemul -DSENZA_MMAP -DVELOCE -DV3 -o runq3 runq_mos.c -lm
+gg:bin/ppc-morphos-gcc-6 -O3 -mcpu=7450 -noixemul -DSENZA_MMAP -o runqV runq_mos.c -lm

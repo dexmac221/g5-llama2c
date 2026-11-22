@@ -1,0 +1,87 @@
+09:37:06
+   rm_e_3_runq3_15.txt..
+     3> achieved tok/s: 79.069767
+   rm_e_3_runqS_15.txt..
+     2> achieved tok/s: 62.986291
+   rm_e_3_runqQ_15.txt..
+     2> achieved tok/s: 49.171843
+   rm_e_3_runqV_15.txt..
+     2> achieved tok/s: 29.537557
+   rm_e_3_runqX_15.txt..
+     1> achieved tok/s: 11.048343
+   rm_e_3_runV_15.txt..
+     3> achieved tok/s: 28.708756
+   rm_e_3_runX_15.txt..
+     2> achieved tok/s: 15.731777
+   rm_e_3_runq3_110.txt..
+     3> achieved tok/s: 13.673557
+   rm_e_3_runqS_110.txt..
+     2> achieved tok/s: 12.752284
+   rm_e_3_runqQ_110.txt..
+     2> achieved tok/s: 11.367705
+   rm_e_3_runqV_110.txt..
+     2> achieved tok/s: 7.634965
+   rm_e_3_runqX_110.txt..
+     1> achieved tok/s: 1.910320
+   rm_e_3_runV_110.txt..
+     3> achieved tok/s: 4.445378
+   rm_e_3_runX_110.txt..
+     2> achieved tok/s: 2.256654
+   rm_e_2_runq3_15.txt..
+     3> achieved tok/s: 79.217148
+   rm_e_2_runqS_15.txt..
+     2> achieved tok/s: 63.126625
+   rm_e_2_runqQ_15.txt..
+     2> achieved tok/s: 48.918641
+   rm_e_2_runqV_15.txt..
+     2> achieved tok/s: 29.974230
+   rm_e_2_runqX_15.txt..
+     1> achieved tok/s: 10.997761
+   rm_e_2_runV_15.txt..
+     3> achieved tok/s: 29.078947
+   rm_e_2_runX_15.txt..
+     2> achieved tok/s: 15.639374
+   rm_e_2_runq3_110.txt..
+     3> achieved tok/s: 13.691246
+   rm_e_2_runqS_110.txt..
+     2> achieved tok/s: 12.867275
+   rm_e_2_runqQ_110.txt..
+     2> achieved tok/s: 11.419836
+   rm_e_2_runqV_110.txt..
+     2> achieved tok/s: 7.818753
+   rm_e_2_runqX_110.txt..
+     1> achieved tok/s: 1.907422
+   rm_e_2_runV_110.txt..
+     3> achieved tok/s: 4.467584
+   rm_e_2_runX_110.txt..
+     2> achieved tok/s: 2.258862
+   rm_e_1_runq3_15.txt..
+     3> achieved tok/s: 78.740157
+   rm_e_1_runqS_15.txt..
+     2> achieved tok/s: 63.220528
+   rm_e_1_runqQ_15.txt..
+     2> achieved tok/s: 47.595190
+   rm_e_1_runqV_15.txt..
+     2> achieved tok/s: 29.832613
+   rm_e_1_runqX_15.txt..
+     1> achieved tok/s: 10.979730
+   rm_e_1_runV_15.txt..
+     3> achieved tok/s: 28.900222
+   rm_e_1_runX_15.txt..
+     2> achieved tok/s: 15.740741
+   rm_e_1_runq3_110.txt..
+     3> achieved tok/s: 13.529349
+   rm_e_1_runqS_110.txt..
+     2> achieved tok/s: 12.863365
+   rm_e_1_runqQ_110.txt..
+     2> achieved tok/s: 11.311008
+   rm_e_1_runqV_110.txt..
+     2> achieved tok/s: 7.772338
+   rm_e_1_runqX_110.txt..
+     1> achieved tok/s: 1.903363
+   rm_e_1_runV_110.txt..
+     3> achieved tok/s: 4.466170
+   rm_e_1_runX_110.txt..
+     2> achieved tok/s: 2.258340
+
+[exited with code 0]
