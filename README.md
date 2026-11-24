@@ -2,7 +2,7 @@
 
 Andrej Karpathy's [llama2.c](https://github.com/karpathy/llama2.c) ported to MorphOS 3.20 on a Power Mac G5, with AltiVec kernels for fp32 and for 8-bit weights. The int8 kernel is built on `vmsummbm`, AltiVec's signed × unsigned byte multiply-sum from 1999. The same code also runs on Mac OS X 10.5.8 Leopard, where OpenMP uses both processors.
 
-The write-up, with the reasoning behind each step, is an article on Towards AI; the link will be added here once it is published.
+The write-up, with the reasoning behind each step, is on Towards AI: [AltiVec Had Intel's Neural-Network Instruction 20 Years Early](https://medium.com/towards-artificial-intelligence/altivec-had-intels-neural-network-instruction-20-years-early-5bca9f93691a) (23 Nov 2026).
 
 ## Results
 
